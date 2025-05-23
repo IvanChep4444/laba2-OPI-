@@ -101,21 +101,21 @@ void ImplIf3::meth3() {
 
 /* Entry point demonstrating object creation, composition, and method execution. */
 int main() {
-    auto objCl3_1 = std::make_shared<Cl3>();
-    auto objCl3_2 = std::make_shared<Cl3>();
+    auto objCl3_1 = std::make_shared<Cl3>(); // Створює розумний вказівник на об'єкт "Cl3".
+    auto objCl3_2 = std::make_shared<Cl3>(); // Створює розумний вказівник на об'єкт "Cl3".
 
-    auto cl2 = std::make_shared<Cl2>();
-    cl2->addCl3(objCl3_1);
-    cl2->addCl3(objCl3_2);
+    auto cl2 = std::make_shared<Cl2>(); // Створює розумний вказівник на об'єкт "Cl2".
+    cl2->addCl3(objCl3_1); // Додає перший об'єкт `Cl3` до "cl2".
+    cl2->addCl3(objCl3_2); // Додає другий об'єкт `Cl3` до "cl2".
 
-    Cl1 cl1;
-    cl1.addPart(cl2);
-    cl1.useParts();
+    Cl1 cl1; // Створює об'єкт "Cl1".
+    cl1.addPart(cl2); // Додає об'єкт `cl2` (який реалізує `If1` через успадкування) до `cl1`.
+    cl1.useParts(); // Викликає метод `useParts()` об'єкта `cl1`, що призводить до виклику `meth1()` для `cl2`.
 
-    cl2->meth2();
+    cl2->meth2(); // Викликає метод `meth2()` об'єкта `cl2`, що виводить повідомлення та викликає `show()` для об'єктів `Cl3`.
 
-    std::unique_ptr<If3> if3 = std::make_unique<ImplIf3>();
-    if3->meth3();
+    std::unique_ptr<If3> if3 = std::make_unique<ImplIf3>(); // Створює унікальний розумний вказівник на об'єкт `ImplIf3`.
+    if3->meth3(); // Викликає метод `meth3()` об'єкта `if3`.
 
     return 0;
 }
